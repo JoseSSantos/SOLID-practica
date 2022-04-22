@@ -1,0 +1,14 @@
+Principio de responsabilidad unica: No se cumple ya que hay clases que tienen distintas responsabilidades 
+dentro, como la File que contiene la responsabilidad de convertir los archivos de mp3 a wav o viceversa y esta 
+funcionalidad deberia de estar en una clase aparte.
+
+Principio de Sustitución de Liskov: Las clases File y Directory no cumplian con este principio ya que implementaban la clase
+FileSystemItemBase y no utilizaban todas sus funciones, lo que he hecho a sido dividir los metodos en 2 interfaces IDirectory y
+IFile para cada una.
+
+Principio abierto cerrado: El principio abierto cerrado no se cumple ya que en las clases File y directory
+a cualquier cosa que quieres añadir necesitias modificar el codigo ya existente al igual que en FilesystemItemBase.
+
+Principio de segregacion de interfaz: Este principio tampoco se cumple ya que antes habia solo una interfaz
+para todos(File y directory) y deberia de haber una para cada uno ya que no todos los metodos son distintos.
+
