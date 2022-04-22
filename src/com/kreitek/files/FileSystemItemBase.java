@@ -1,13 +1,13 @@
 package com.kreitek.files;
 
-import java.util.List;
+import com.kreitek.files.Interfaces.FileSystemItem;
 
 public abstract class FileSystemItemBase implements FileSystemItem {
     protected static final String PATH_SEPARATOR = "/";
     protected String name;
-    protected FileSystemItem parent;
+    protected Directory parent;
 
-    protected FileSystemItemBase(FileSystemItem parent, String name) {
+    protected FileSystemItemBase(Directory parent, String name) {
         setName(name);
         setParent(parent);
     }
@@ -26,12 +26,12 @@ public abstract class FileSystemItemBase implements FileSystemItem {
     }
 
     @Override
-    public FileSystemItem getParent() {
+    public Directory getParent() {
         return parent;
     }
 
     @Override
-    public void setParent(FileSystemItem directory) {
+    public void setParent(Directory directory) {
         if (directory != null && !(directory instanceof Directory)) {
             throw new IllegalArgumentException("El padre solo puede ser un directorio");
         }
@@ -53,26 +53,6 @@ public abstract class FileSystemItemBase implements FileSystemItem {
         return path;
     }
 
-    @Override
-    public abstract String getExtension();
-
-    @Override
-    public abstract List<FileSystemItem> listFiles();
-
-    @Override
-    public abstract int getSize();
-
-    @Override
-    public abstract void open();
-
-    @Override
-    public abstract void setPosition(int numberOfBytesFromBeginning);
-
-    @Override
-    public abstract byte[] read(int numberOfBytesToRead);
-
-    @Override
-    public abstract void write(byte[] buffer);
 
     public abstract void close();
 }
